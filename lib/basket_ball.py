@@ -258,12 +258,13 @@ def average_rebounds_by_shoe_brand():
 
     for player in players:
         # 1. check if brands has the player brand
-        if (brands.get(player["shoe_brand"]) == None):
+        if (player["shoe_brand"] not in brands):
         # 2. if it does not have it create the list entry with "extend"
             brands[player["shoe_brand"]] = list()
 
         # 3. append the points to the array for the brand entry
-            brands[player["shoe_brand"]].append(player["rebounds_per_game"])
+        brands[player["shoe_brand"]].append(player["rebounds_per_game"])
+    
 
     # 4. loop through the brands object
     for brand in brands.keys():
@@ -273,7 +274,7 @@ def average_rebounds_by_shoe_brand():
             rebounds_per_brand += rebounds
         average_rebound = rebounds_per_brand / len(brands[brand])
         # 6. print '{brand_name}': {Average}
-        print('"' + brand + '": ' + '{0:.2f}'.format(average_rebound))
+        print(brand + ':  ' + '{0:.2f}'.format(average_rebound))
        
 
     
